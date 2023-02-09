@@ -3,10 +3,17 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Header from 'components/Header'
+import Banner from 'components/Banner'
+import requests from 'utils/request'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+
+
+
+
+
+const Home = ({   })=>{
   return (
     //? 😮‍💨Add color styles/themes option using state 
     <div className="relative h-screen bg-gradient-to-b from-transparent/10 to-[#376df6] lg:h-[140vh]">
@@ -21,6 +28,7 @@ export default function Home() {
       {/* Header */}
       <main>
         {/*Banner*/}
+        <Banner/>
         <section>
           {/*Row */}
           {/*Row */}
@@ -33,4 +41,44 @@ export default function Home() {
       {/* Modal */}
     </div>
   )
+}
+
+export default Home
+
+export const getServerSideProps = async ()=>{
+  const [
+    //* can be optimized
+    netflixOriginals,
+    trendingNow,
+    topRated,
+    actionMovies,
+    comedyMovies,
+    horrorMovies,
+    romanceMovies,
+    documentaries,
+  ] = await Promise.all([
+    //*resolves all requests
+    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
+    fetch(requests.fetchTrending).then((res) => res.json()),
+    fetch(requests.fetchTopRated).then((res) => res.json()),
+    fetch(requests.fetchActionMovies).then((res) => res.json()),
+    fetch(requests.fetchComedyMovies).then((res) => res.json()),
+    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
+    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
+    fetch(requests.fetchDocumentaries).then((res) => res.json()),
+  ])
+
+  return{
+    props:{
+      netflixOriginals: netflixOriginals.results,
+      trendingNow: trendingNow.results,
+      topRated: topRated.results,
+      actionMovies: actionMovies.results,
+      comedyMovies: comedyMovies.results,
+      horrorMovies: horrorMovies.results,
+      romanceMovies: romanceMovies.results,
+      documentaries: documentaries.results,
+    },
+  }
+
 }
