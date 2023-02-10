@@ -5,15 +5,28 @@ import styles from '@/styles/Home.module.css'
 import Header from 'components/Header'
 import Banner from 'components/Banner'
 import requests from 'utils/request'
+import {Movie} from 'typings'
 
 const inter = Inter({ subsets: ['latin'] })
 
+interface Props{
+  netflixOriginals: Movie[]
+  trendingNow: Movie[]
+  topRated: Movie[]
+  actionMovies: Movie[]
+  comedyMovies: Movie[]
+  horrorMovies: Movie[]
+  romanceMovies: Movie[]
+  documentaries: Movie[]
+
+}
 
 
 
 
-
-const Home = ({   })=>{
+const Home = ({netflixOriginals,
+  actionMovies,comedyMovies,documentaries,horrorMovies,romanceMovies,topRated,trendingNow,
+  }: Props)=>{
   return (
     //? 😮‍💨Add color styles/themes option using state 
     <div className="relative h-screen bg-gradient-to-b from-transparent/10 to-[#376df6] lg:h-[140vh]">
@@ -26,9 +39,9 @@ const Home = ({   })=>{
 
       <Header/>
       {/* Header */}
-      <main>
+      <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-16'>
         {/*Banner*/}
-        <Banner/>
+        <Banner netflixOriginals={netflixOriginals}/>
         <section>
           {/*Row */}
           {/*Row */}
