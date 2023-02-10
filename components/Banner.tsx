@@ -1,38 +1,3 @@
-
-// import Image from 'next/image';
-// import { Movie } from 'typings';
-// import { useState, useEffect } from 'react';
-// import { baseUrl } from 'constants/movie';
-// import styles from '@/styles/Home.module.css'
-
-// interface Props{
-//   netflixOriginals: Movie[]
-// }
-
-
-// function Banner({netflixOriginals}:Props) {
-//   const [movie,setMovie]=useState<Movie|null>(null)
-
-
-//   useEffect(()=>{
-//     //? Generates a random index depeninding on the movie list length
-//     setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)])
-
-//   },[netflixOriginals])
-
-//   return (
-//     <div>
-
-//       <div className={styles.backdrop}>
-//         <Image src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`} alt="movie image"   height={300} width={500} sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw" priority />
-//       </div>
-
-
-//     </div>
-//   )
-// }
-
-// export default Banner
 import Image from 'next/image';
 import { Movie } from 'typings';
 import { useState, useEffect } from 'react';
@@ -60,7 +25,9 @@ function Banner({netflixOriginals}:Props) {
     <div className='flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12'>
 
       <div className="absolute top-0 left-0 h-[95vh] -z-10 w-screen">
-        <Image src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`} alt="movie image" fill={true} style={{objectFit: 'cover',}} sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw" priority />
+        {/* {console.log(`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`)} */}
+        <Image src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`} alt="movie image" fill={true} style={{objectFit: 'cover',}} priority placeholder='empty' />
+        {/* sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw" */}
       </div>
 
     <h1 className='text-2xl lg:text-7xl font-bold md:text-4xl'>{movie?.title || movie?.name || movie?.original_name}</h1>

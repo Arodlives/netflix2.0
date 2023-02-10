@@ -6,6 +6,7 @@ import Header from 'components/Header'
 import Banner from 'components/Banner'
 import requests from 'utils/request'
 import {Movie} from 'typings'
+import Row from 'components/Row'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +30,7 @@ const Home = ({netflixOriginals,
   }: Props)=>{
   return (
     //? 😮‍💨Add color styles/themes option using state 
-    <div className="relative h-screen bg-gradient-to-b from-transparent/10 to-[#376df6] lg:h-[140vh]">
+    <div className="relative h-screen w-screen bg-gradient-to-b from-transparent/10 to-[#376df6] lg:h-[100%] lg:w-[100vw]">
       <Head>
         <title>Netflix</title>
         <meta name="description" content="Aaron's Netflix 2.0" />
@@ -43,12 +44,16 @@ const Home = ({netflixOriginals,
         {/*Banner*/}
         <Banner netflixOriginals={netflixOriginals}/>
         <section>
-          {/*Row */}
-          {/*Row */}
-          {/*Row */}
-          {/*Row */}
-          {/*Row */}
-          {/*Row */}
+          <Row title="Trending Now" movies={trendingNow} />
+          <Row title="Top Rated" movies={topRated} />
+          <Row title="Action Thrillers" movies={actionMovies} />
+          {/* My List Component */}
+          {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
+
+          <Row title="Comedies" movies={comedyMovies} />
+          <Row title="Scary Movies" movies={horrorMovies} />
+          <Row title="Romance Movies" movies={romanceMovies} />
+          <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
       {/* Modal */}
