@@ -28,7 +28,8 @@ function Header() {
 
 
   return (
-    <header className={`${isScrolled && 'bg-[#000000]'}`}>
+    <header className={`${isScrolled && 'bg-[#000000]'} transition-opacity transition-duration-200`} style={{ transition: 'background-color 0.5s ease-in-out' }}>
+    {/* // <header className={`${isScrolled && 'bg-opacity-[90]-[#000000]'}`} style={{ transition: 'background-color 0.5s ease-in-out, opacity 0.5s ease-in-out' }}> */}
         <div className="flex items-center space-x-2 md:space-x-10">
             <Image className="cursor-pointer object-contain" src={netflix} width={100} height={100} alt="Netflix logo" />
 

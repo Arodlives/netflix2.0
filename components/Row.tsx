@@ -15,6 +15,7 @@ function Row({title,movies}:Props) {
   const [isMoved,setIsMoved]=useState(false)
 
   const handleClick = (direction: string) => {
+    console.log("used---")
     setIsMoved(true)
     if (rowRef.current) {
       const { scrollLeft, clientWidth } = rowRef.current
@@ -35,7 +36,7 @@ function Row({title,movies}:Props) {
             onClick={()=> handleClick('left')}/>
             
 
-            <div ref={rowRef} className="flex items-center space-x-0.5 overflow-x-scroll md:space-x-2.5 md:p-2 scrollbar-hide">
+            <div ref={rowRef} className="flex items-center space-x-0.5  overflow-x-scroll md:space-x-2.5 md:p-2 scrollbar-hide">
                 {/*Thumbnail */}
                 {movies.map((movie)=>(
                 <Thumbnail key={movie.id} movie={movie}/>
@@ -44,7 +45,7 @@ function Row({title,movies}:Props) {
 
 
 
-            <IconChevronRight className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 duration-200 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 `}
+            <IconChevronRight className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 duration-200 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 bg-slate-500`}
             onClick={()=> handleClick('right')}/>
         </div>
     </div>
